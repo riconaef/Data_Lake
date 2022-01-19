@@ -27,13 +27,13 @@ If the script is run on a notebook, the main function can be called as follows: 
 
 The file "df.cfg" is not used if the pipeline is run on a emr cluster directly.
 
-To increase the performance of the process, the pipeline was performed only on a small fraction of the dataset (Song input data: 'song_data/A/A/'*'/'*'.json')
+To increase the performance of the process, the pipeline was performed only on a small fraction of the dataset (Song input data: 'song_data/A/A/*/*.json')
 
 ### Test query
 To test, the data are loaded back in from the parquet files to perform a test query. 
 
 spark.sql("""<br/>
-SELECT so.title, COUNT(*) amount<br/>
+>>SELECT so.title, COUNT(*) amount<br/>
 FROM df_songs so<br />
 JOIN df_songplay sp ON (so.song_id = sp.song_id)<br/>
 GROUP BY so.title
