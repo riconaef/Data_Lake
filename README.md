@@ -1,38 +1,38 @@
 # Creating-a-Data_Lake-on-AWS
-**Creating a Data Warehouse for building a relational database with Postgres on AWS**
+**Creating a Data Lake for building a relational database on AWS**
  
 ### Follwoing are the used libraries
-configparser, psycopg2
+configparser, datetime, os, pyspark
+
+If the script is run directly on a emr-cluster the configparser is not used.
 
 ### Project Motivation
 A startup called Sparkify, needs to have a relational database in the form of a star-schema to improve the data-analysis. The provided data consists of json files, which need to be reordered into five new tables.
 Below are the tables, which were created during the project: 
 
-<ins>Staging tables:</ins> staging_events_table, staging_songs_table
-
-<ins>Fact table:</ins> songplay
+<ins>Fact table:</ins> songplays
 
 <ins>Dimension tables:</ins> users, songs, artists, times
 
 ![alt text](https://github.com/riconaef/Creating-a-Data-Warehouse-on-AWS/blob/main/star-schema.png)
 
-The data is loaded from an S3 storage on AWS into the staging tables. From there the data are reordered with the help of an ETL pipeline into 5 new tables which have an star-schema architecture. 
+The data is loaded from an S3 bucket on AWS to the emr-cluster. From there the data are reordered with the help of an ETL pipeline into 5 new tables which have an star-schema architecture. Compared to a Data Warehouse, the data is not transformed.
 
 ### File Descriptions
-sql_queries.py<br />
-create_tables.py<br />
 etl.py<br />
-dwh.cfg<br />
+df.cfg<br />
 
-To run, first the "create_tables.py" needs to be run, which creates the tables. After, "etl.py" can be run, which fills the table with an etl-pipeline. 
+To run, "etl.py" can be run, which loads the data from the S3 bucket, then loads the data back on another S3 bucket. 
+If the script is run on a notebook, the main function can be called as follows: main().
 
 ### Test query
-SELECT songs.title, COUNT(*) amount<br />
-FROM songs<br />
-JOIN songplay ON (songs.song_id = songplay.song_id)<br />
-GROUP BY songs.title<br />
-ORDER BY amount DESC<br />
-LIMIT 10<br />
+To test, the data are loaded back in from the parquet files to perform a test query. 
+
+test = spark.sql("""
+    SELECT so.title, COUNT(*) amount
+    FROM df_songs so
+    JOIN df_songplay sp ON (so.song_id = sp.song_id)
+    GROUP BY so.title""").show()
  
 Output:<br />
 ![alt text](https://github.com/riconaef/Creating-a-Data-Warehouse-on-AWS/blob/main/query1.png)
