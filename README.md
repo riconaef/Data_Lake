@@ -32,8 +32,8 @@ To increase the performance of the process, the pipeline was performed only on a
 ### Test query
 To test, the data are loaded back in from the parquet files to perform a test query. 
 
-spark.sql("""<br/>
->>SELECT so.title, COUNT(*) amount<br/>
+spark.sql(<br/>
+>>"""SELECT so.title, COUNT(*) amount<br/>
 FROM df_songs so<br />
 JOIN df_songplay sp ON (so.song_id = sp.song_id)<br/>
 GROUP BY so.title
