@@ -1,4 +1,4 @@
-# Creating-a-Data_Lake-on-AWS
+# Creating-a-Data Lake-on-AWS
 **Creating a Data Lake for building a relational database on AWS**
  
 ### Follwoing are the used libraries
