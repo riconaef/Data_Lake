@@ -25,7 +25,7 @@ df.cfg<br />
 The "etl.py" can be run, which loads the data from the S3 bucket, then loads the data back on another S3 bucket. 
 If the script is run on a notebook, the main function can be called as follows: main().
 
-To increase the performance of the process, the pipeline was performed only on a small fraction of the dataset (Song input data: 'song_data/A/A/*/*.json')
+To increase the performance of the process, the pipeline was performed only on a small fraction of the dataset (Song input data: 'song_data/A/A/'*'/'*'.json')
 
 ### Test query
 To test, the data are loaded back in from the parquet files to perform a test query. 
