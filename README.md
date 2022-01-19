@@ -22,14 +22,14 @@ The data is loaded from an S3 bucket on AWS to the emr-cluster. From there the d
 etl.py<br />
 df.cfg<br />
 
-To run, "etl.py" can be run, which loads the data from the S3 bucket, then loads the data back on another S3 bucket. 
+The "etl.py" can be run, which loads the data from the S3 bucket, then loads the data back on another S3 bucket. 
 If the script is run on a notebook, the main function can be called as follows: main().
 
 ### Test query
 To test, the data are loaded back in from the parquet files to perform a test query. 
 
 test = spark.sql("""<br />
-<tb />SELECT so.title, COUNT(*) amount<br />
+&emsp SELECT so.title, COUNT(*) amount<br />
     FROM df_songs so<br />
     JOIN df_songplay sp ON (so.song_id = sp.song_id)<br />
     GROUP BY so.title""").show()<br />
