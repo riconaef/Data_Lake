@@ -36,7 +36,7 @@ GROUP BY so.title
 ORDER BY amount DESC""").show()<br/>
  
 Output:<br />
-![alt text](https://github.com/riconaef/Creating-a-Data-Warehouse-on-AWS/blob/main/query1.png)
+![alt text](https://github.com/riconaef/Data_Lake/blob/main/query.png)
 
 ### Licensing, Authors, Acknowledgements
 I thank Sparkify for offering the data.
