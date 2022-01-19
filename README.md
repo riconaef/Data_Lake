@@ -22,8 +22,10 @@ The data is loaded from an S3 bucket on AWS to the emr-cluster. From there the d
 etl.py<br />
 df.cfg<br />
 
-The "etl.py" can be run, which loads the data from the S3 bucket, then loads the data back on another S3 bucket. 
+To run the pipeline, the "etl.py" file can be run, which loads the data from the S3 bucket reorders them and loads the data into five tables described above on another S3 bucket. 
 If the script is run on a notebook, the main function can be called as follows: main().
+
+The file "df.cfg" is not used if the pipeline is run on a emr cluster directly.
 
 To increase the performance of the process, the pipeline was performed only on a small fraction of the dataset (Song input data: 'song_data/A/A/'*'/'*'.json')
 
