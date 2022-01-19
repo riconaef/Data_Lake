@@ -28,8 +28,8 @@ If the script is run on a notebook, the main function can be called as follows: 
 ### Test query
 To test, the data are loaded back in from the parquet files to perform a test query. 
 
-test = spark.sql(<br />
-""" SELECT so.title, COUNT(*) amount<br />
+test = spark.sql("""<br />
+<em> SELECT so.title, COUNT(*) amount<br />
     FROM df_songs so<br />
     JOIN df_songplay sp ON (so.song_id = sp.song_id)<br />
     GROUP BY so.title""").show()<br />
